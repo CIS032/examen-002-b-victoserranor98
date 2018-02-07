@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package datos;
+package examen2;
 
 /**
  *
- * @author Jorge Pucha
+ * @author VICTOR SERRANO
  */
 public class CuentaPrestamo extends Cuenta {
 
     public CuentaPrestamo(String cliente) {
         super(cliente);
     }
-    
+
     public CuentaPrestamo(String cliente, String tipoCliente, double balance, double tasaInteres) {
         super(cliente, tipoCliente, balance, tasaInteres);
     }
-    
+
     @Override
     public double calcularInteres(int meses) {
         return meses * this.getTasaInteres();
@@ -26,7 +26,7 @@ public class CuentaPrestamo extends Cuenta {
 
     @Override
     public double depositar(double monto) {
-        double total=monto + this.getBalance();
+        double total = monto + this.getBalance();
         this.setBalance(total);
         return total;
     }

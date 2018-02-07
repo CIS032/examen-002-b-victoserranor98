@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package datos;
+package examen2;
 
 /**
  *
- * @author Jorge Pucha
+ * @author VICTOR SERRANO
  */
 public class CuentaAhorro extends Cuenta {
 
-    public CuentaAhorro(String cliente) {
+    public CuentaAhorro() {
+    }
+    
+     public CuentaAhorro(String cliente) {
         super(cliente);
     }
     
@@ -38,5 +41,4 @@ public class CuentaAhorro extends Cuenta {
         this.setBalance(total);
          return total;
     }
-    
 }

@@ -3,50 +3,69 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package datos;
+package examen2;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Jorge Pucha
+ * @author VICTOR SERRANO
  */
 public class Banco {
-
     static ArrayList<Cuenta> listaCuenta = new ArrayList<Cuenta>();
-    static String archivo = "";
+    static String archivo = "asd.csv";
 
     public static void agregar(Cuenta cuenta) {
         listaCuenta.add(cuenta);
     }
     
-    public static void grabar() {
-        PrintWriter pw = null;
-        try {
-	    // Examen002: La ruta y el nombre del 'archivo' debe ser 
-	    // establecido dinamicamente por el usuario en el lugar adecuado
-            FileWriter fw = new FileWriter(archivo, true);
-            pw = new PrintWriter(fw);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        for (Cuenta cuenta : listaCuenta) {
-            String linea = "";
-            if (cuenta instanceof CuentaAhorro) {
-                linea="Cuenta Ahorro"+";"+cuenta.toString();
-            }if (cuenta instanceof CuentaHipoteca) {
-                linea="Cuenta Hipoteca"+";"+cuenta.toString();
-            }if (cuenta instanceof CuentaPrestamo) {
-                linea="Cuenta Prestamo"+";"+cuenta.toString();
-            }
-            pw.println(linea);
-        }
-        pw.close();
-    }
-    
+//    public  void grabar() throws IOException {
+//        String x = JOptionPane.showInputDialog(null,"","C:\\Users\\");
+//        FileWriter fw = new FileWriter(new File(x+".csv"));
+//        try {
+//         for (Cuenta cuenta : listaCuenta) {
+//            fw.write(cuenta.getCliente()+";"+cuenta.getTipoCliente()+";"+cuenta.getBalance()+";"+cuenta.getTasaInteres());
+//        }
+//            fw.close();
+//        } catch (IOException e) {
+//        }
+//    }
+//    public void leer(){
+//        String cadena;
+//        FileReader f = new FileReader(new File(""));
+//        BufferedReader b = new BufferedReader(f);
+//        while((cadena = b.readLine())!=null) {
+//            System.out.println(cadena);
+//        }
+//        b.close();
+//    }
+//    public Cuenta depositar(String n){
+//        for (Cuenta cuenta : listaCuenta) {
+//            if (n.equalsIgnoreCase(cuenta.getCliente())) {
+//                int d = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese cantidad a depositar"));
+//                cuenta.setBalance(cuenta.getBalance()+d);
+//                return cuenta;
+//            }
+//        }
+//        return null;
+//    }
+//    public Cuenta retirar(String n){
+//        for (Cuenta cuenta : listaCuenta) {
+//            if (n.equalsIgnoreCase(cuenta.getCliente())) {
+//                int d = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese cantidad a retirar"));
+//                cuenta.setBalance(cuenta.getBalance()-d);
+//                return cuenta;
+//            }
+//        }
+//        return null;
+//    }
     public static Cuenta buscarCuentaAhorro() {
         String nombre = (JOptionPane.showInputDialog(null, "Ingrese nombre", "Verificar Cuenta", JOptionPane.INFORMATION_MESSAGE));
         CuentaAhorro cuentaAH = new CuentaAhorro(nombre);
@@ -56,7 +75,7 @@ public class Banco {
         }
         return null;
     }
-    public static Cuenta buscarCuentaHipoteca() {
+    public  Cuenta buscarCuentaHipoteca() {
         String nombre = (JOptionPane.showInputDialog(null, "Ingrese nombre", "Verificar Cuenta", JOptionPane.INFORMATION_MESSAGE));
         CuentaHipoteca cuentaAH = new CuentaHipoteca(nombre);
         Cuenta c=(Cuenta)cuentaAH;
@@ -65,13 +84,13 @@ public class Banco {
         }
         return null;
     }
-
-    public static void leerCuentas(){
-	/* 
-	 * Lee los datos desde un archivo de texto, crea objetos 'Cuenta'
-	 * y los almacena en la lista 'listaCuenta'
-	 */
-	// Examen 002: Completar este metodo
-
+    public  void presentar(){
+        String linea = "";
+        for (Cuenta cuenta : listaCuenta) {
+            linea = linea +cuenta.toString()+"\n";
+        }
+        JOptionPane.showMessageDialog(null, linea);
     }
+
+   
 }

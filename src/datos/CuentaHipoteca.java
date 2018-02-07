@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package datos;
+package examen2;
 
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Jorge Pucha
+ * @author VICTOR SERRANO
  */
 public class CuentaHipoteca extends Cuenta {
 
@@ -19,7 +19,7 @@ public class CuentaHipoteca extends Cuenta {
     public CuentaHipoteca(String cliente) {
         super(cliente);
     }
-    
+
     public CuentaHipoteca() {
     }
 
@@ -62,26 +62,27 @@ public class CuentaHipoteca extends Cuenta {
             if (depositos <= 12 && this.getTipoCliente().equalsIgnoreCase("Empresa")) {
                 depositos++;
                 double pagar = this.getBalance() / meses;
-                JOptionPane.showMessageDialog(null, "Valor a Pagar"+pagar,"Deposito Realizado "+getDepositos(), JOptionPane.INFORMATION_MESSAGE);
-                
+                JOptionPane.showMessageDialog(null, "Valor a Pagar" + pagar, "Deposito Realizado " + getDepositos(), JOptionPane.INFORMATION_MESSAGE);
+
             } else if (depositos > 12 && this.getTipoCliente().equalsIgnoreCase("Empresa")) {
                 depositos++;
                 double pagar = this.getBalance() / meses + calcularInteres(meses);
-                JOptionPane.showMessageDialog(null, "Valor a Pagar"+pagar, "Deposito Realizado "+getDepositos(), JOptionPane.INFORMATION_MESSAGE);
-                
+                JOptionPane.showMessageDialog(null, "Valor a Pagar" + pagar, "Deposito Realizado " + getDepositos(), JOptionPane.INFORMATION_MESSAGE);
+
             }
             if (depositos <= 12 && this.getTipoCliente().equalsIgnoreCase("Natural")) {
                 depositos++;
                 double pagar = this.getBalance() / meses;
-                JOptionPane.showMessageDialog(null,"Valor a Pagar"+pagar, "Deposito Realizado "+getDepositos(), JOptionPane.INFORMATION_MESSAGE);
-                
+                JOptionPane.showMessageDialog(null, "Valor a Pagar" + pagar, "Deposito Realizado " + getDepositos(), JOptionPane.INFORMATION_MESSAGE);
+
             } else if (depositos > 12 && this.getTipoCliente().equalsIgnoreCase("Natural")) {
                 depositos++;
                 double pagar = this.getBalance() / meses + (calcularInteres(meses) / 2);
-                JOptionPane.showMessageDialog(null, "Valor a Pagar"+pagar, "Deposito Realizado "+getDepositos(), JOptionPane.INFORMATION_MESSAGE);
-                
+                JOptionPane.showMessageDialog(null, "Valor a Pagar" + pagar, "Deposito Realizado " + getDepositos(), JOptionPane.INFORMATION_MESSAGE);
+
             }
         }
 
     }
+
 }
